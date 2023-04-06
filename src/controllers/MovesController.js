@@ -2,12 +2,13 @@ const knex = require("../database/knex");
 
 class MovesController{
   async create(request,response){
-    const {title, description, tags, links} = request.body;
+    const {title, description, tags, nota} = request.body;
     const user_id = request.user.id;
 
     const [move_id] = await knex("moves").insert({
       title,
       description,
+      nota,
       user_id
     });
 
